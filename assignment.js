@@ -8,10 +8,12 @@
 // templates many times
 var animals_template;
 var critter_template;
+var photos_template;
 
 // variables to store the current displayed album and photo
 var current_category = animals_data.category[0];
 var current_animal_type = current_category.name;
+var current_picture = animals_data.category[0];
 
 
 // a helper function that instantiates a template
@@ -34,6 +36,9 @@ $(document).ready(function(){
 
 	source = $("#critter-template").html();
 	critter_template = Handlebars.compile(source);
+
+	source = $("#photos-template").html();
+	photos_template = Handlebars.compile(source);
 	 
 	//  clicking on the albums tab shows the 
 	//  thumbnails of all the albums
@@ -94,7 +99,7 @@ $(document).ready(function(){
 
 				
 			 	
-			});*/s
+			});*/
 		});
 	});
 
@@ -105,7 +110,8 @@ $(document).ready(function(){
 	$("#photos-tab").click(function () {
 		
 		// displays the photos template
-		showTemplate(photos_template, current_album);
+		showTemplate(photos_template, animals_data);
+		console.log("hello");
 
 		// make the photos tab the active one
 		// first make the currently active tab inactive
@@ -125,10 +131,10 @@ $(document).ready(function(){
 			var index = $(this).data("id");
 
 			// set the current photo to this photo
-			current_photo = current_album.photos[index];
+			current_picture = current_album.photos[index];
 			
 			// displays the single photo template
-			showTemplate(photo_template, current_photo);
+			showTemplate(photo_template, current_picture);
 		});
 	});
 
