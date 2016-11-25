@@ -1,0 +1,121 @@
+<!-- This is a first example of using a template -->
+
+<head>
+
+<!-- include our libraries and css files -->
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/handlebars-v3.0.3.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+<script src="AnimalsData.js"></script>
+<script src="assignment.js"></script>
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="assignment.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<div class="container-fluid" role="main">
+    	<!-- put your HTML here -->
+    	<div class="page-header">
+		<h1>Week 4 Assignment </h1>
+		 <h3>Animals</h3>
+
+		    <ul class="nav nav-tabs">
+            <li role="" class="active"><a href="#" id="animals-tab" >All Categories</a></li>
+            <li role=""><a href="#" id="photos-tab" >Photos</a></li>
+          </ul>
+      <br/><br/>
+		 </div>
+
+
+    	<div id="content">
+				    
+
+		      <!-- A navigation menu that selects different views
+		      	    Gonna leave this out for the time being..not sure if i need it
+
+		      <ul class="nav nav-tabs">
+		            <li role="" class="active"><a href="#" id="albums-tab" >Albums</a></li>
+		            <li role=""><a href="#" id="photos-tab" >Photos</a></li>
+		            <li role=""><a href="#" id="slideshow-tab" >Slideshow</a></li>
+		          </ul>
+		      <br/><br/>
+		      -->
+
+      	</div>
+      </div>
+
+<script id="animals-template" type="text/x-handlebars-template">
+  <div class="row">
+
+    {{#each category}}
+    <div class="col-xs-12 col-md-4">             
+          <div class="animaltype" class="caption text-center" data-id="{{@index}}">
+              <a href="#"><h4> {{name}} </h4></a><br>
+              <span id="theid" style="display: none"> {{@index}}</span>
+         </div>
+    </div> <!-- / col -->
+
+    {{/each}}
+
+  </div> <!-- / row -->
+</script>
+
+
+<!-- this is the template for the photos view of a single animal -->
+<!-- 
+   
+-->
+<script id="critter-template" type="text/x-handlebars-template">
+  <div class="row">
+    <!-- xs-12 : small display shows a single column (taking up 12 grid columns)-->
+    <!-- md-3 : medium and up displays use 3 grid columns per column -->
+
+    {{#each animals}}
+    <div class="col-xs-12 col-md-3"> 
+     <div class="photo-thumbnail"  data-id="{{@index}}">
+        <img class="crop-img" src="{{image1}}" alt=""/> 
+         <img class="crop-img" src="{{image2}}" alt=""/> 
+          
+         <div class="caption">
+            <h3>{{name}}</h3>
+            <p>{{description}}</p>
+         </div>
+      </div>
+       
+    </div> <!-- / col -->
+    {{/each}}
+
+  </div> <!-- / row -->
+</script>
+
+<script id="photos-template" type="text/x-handlebars-template">
+  <div class="row">
+    <!-- xs-12 : small display shows a single column (taking up 12 grid columns)-->
+    <!-- md-3 : medium and up displays use 3 grid columns per column -->
+
+    {{#each photo}}
+    <div class="col-xs-12 col-md-3"> 
+     <div class="photo-thumbnail"  data-id="{{@index}}">
+        <img class="crop-img" src="{{image1}}" alt=""/> 
+         <img class="crop-img" src="{{image2}}" alt=""/> 
+          
+         <div class="caption">
+            <h3>{{name}}</h3>
+            <p>{{description}}</p>
+         </div>
+      </div>
+       
+    </div> <!-- / col -->
+    {{/each}}
+
+  </div> <!-- / row -->
+</script>
+
+
+
+</body>
